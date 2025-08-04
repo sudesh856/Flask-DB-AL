@@ -12,3 +12,6 @@ class Person(db.Model):
 
     def __repr__(self):
         return f'Person with name {self.name} and age {self.age}.'
+    
+
+    
