@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Things
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="{{ url_for('update_things', pid = person.pid) }}">
+
+    <input type="text" name="name" value="{{person.name}}" required> <br>
+    <input type="number" name="age" value="{{person.age}}"> <br>
+    <button type="submit">Confirm Edit</button>
+</form>
+
+{% endblock %}
