@@ -26,6 +26,27 @@ def register_routes(app,db):
             people = Person.query.all()
             return render_template('index.html', people = people)
         
+    @app.route('/clear_all')
+
+    def clear_all():
+        db.session.query(Person).delete()
+        db.session.commit()
+        return render_template('index.html')
+    
+
+    @app.route('/delete/<int:pid>', methods=['DELETE'])
+    def delete_pid(pid):
+        print(f"Trying to delete person with pid={pid}")
+        Person.query.filter(Person.pid == pid).delete()
+        db.session.commit()
+        return '', 204
+    
+    @app.route('/detail/<int:pid>')
+    def detail(pid):
+        person = Person.query.filter(Person.pid==pid).first()
+
+        return render_template('detail.html',person=person)
+        
 
         
 
