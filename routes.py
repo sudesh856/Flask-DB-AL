@@ -11,4 +11,4 @@ def register_routes(app,db):
         print("DB path:", db.engine.url)
         people = Person.query.all()
 
-        return str(people)
+        return render_template('index.html', people = people)
